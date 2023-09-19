@@ -1,0 +1,14 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+.nav-links > a, .nav-links > li > a{
+    color: inherit;
+    text-decoration: none;
+    /* border-bottom: 2px solid var(--bs-primary); */
+    transition: .1s;
+}
+
+.router-link-exact-active {
+    border-bottom: 2px solid var(--bs-primary);
+    /* transform: scale(1.1); */
+    font-weight: bold;
+}
