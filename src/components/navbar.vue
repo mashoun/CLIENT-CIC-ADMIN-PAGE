@@ -10,6 +10,7 @@
       <router-link to="/media">Media</router-link>
       <router-link to="/workshops">Workshops</router-link>
       <router-link to="/fees">Fees</router-link>
+      <router-link to="/certifications">Certifications</router-link>
     </nav>
     <i class="d-block d-lg-none bi bi-three-dots-vertical fs-4 text-secondary" data-bs-toggle="dropdown"></i>
     <ul class="dropdown-menu  nav-links">
@@ -19,6 +20,7 @@
         <li class="dropdown-item"><router-link to="/media">Media</router-link></li>
         <li class="dropdown-item"><router-link to="/workshops">Workshops</router-link></li>
         <li class="dropdown-item"><router-link to="/fees">Fees</router-link></li>
+        <li class="dropdown-item"><router-link to="/certifications">Certifications</router-link></li>
     </ul>
   </header>
 </template>

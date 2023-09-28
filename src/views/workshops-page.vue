@@ -15,6 +15,7 @@
                 <th scope="col">THUMBNAIL</th>
                 <th scope="col">TITLE</th>
                 <th scope="col">DESCRIPTION</th>
+                <th scope="col">LINK</th>
               </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@
                 </td>
                 <td>{{node.title}}</td>
                 <td>{{node.description}}</td>
+                <td>{{node.link}}</td>
               </tr>
             </tbody>
           </table>
@@ -98,8 +100,9 @@ export default {
 
             // save to database
 
-            var title = prompt('Enter Title')
-            var description = prompt('enter Description')
+            var title = prompt('Enter Workshop Title')
+            var description = prompt('Enter Workshop Description')
+            var link = prompt('Enter Workshop Link')
 
             fetch(this.store.getApi() + "?addWorkshopRecord=1",{
               method:"POST",
@@ -113,7 +116,8 @@ export default {
                 workshop:{
                   thumbnail:res[0].src,
                   title,
-                  description
+                  description,
+                  link
                 }
               })
             })

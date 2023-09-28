@@ -77,7 +77,7 @@ export const useStore = defineStore('store', {
     actions: {
 
         getApi() {
-            return 'https://script.google.com/macros/s/AKfycbwBPCUP0k3LO721Ypbhn__kE4xfBn-Ddd_SolilasgGR1zpwEjpBmrw52IiyvIR6xk7/exec'
+            return 'https://script.google.com/macros/s/AKfycbyoNuVRAkF9QlYVpvwu1GooLe4LP9L2O94c-UiCbJty9KQAnzwaOltRpF2tbtAvXb7W/exec'
         },
 
     }

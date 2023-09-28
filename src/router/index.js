@@ -43,6 +43,12 @@ const router = createRouter({
       name: 'partners',
       component: () => import('../views/partners-page.vue')
     },
+    
+    {
+      path: '/certifications',
+      name: 'certifications',
+      component: () => import('../views/certifications.vue')
+    },
   ]
 })
 

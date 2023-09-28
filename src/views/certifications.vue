@@ -6,28 +6,26 @@
         <div class="table-responsive">
           <table class="table caption-top">
             <caption>
-              <h5 class="text-primary">Majors Management <span v-if="spinner" class="spinner spinner-grow spinner-grow-sm"></span></h5>
+              <h5 class="text-primary">Certifications Management <span v-if="spinner" class="spinner spinner-grow spinner-grow-sm"></span></h5>
             </caption>
             <thead>
               <tr>
                 <th scope="col">DEL</th>
                 <th scope="col">DATE</th>
-                <th scope="col">THUMBNAIL</th>
-                <th scope="col">TITLE</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
                 <th scope="col">DESCRIPTION</th>
-                <th scope="col">LINK</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="node in store.profile.majors" :key="node">
+              
+              <tr v-for="node in store.profile.certifications" :key="node">
                 <th scope="row"><i @click="removePartnerRecord(node.id)"  class="bi bi-trash text-danger"></i></th>
                 <td>{{node.date}}</td>
-                <td>
-                  <img :src="node.thumbnail" :alt="node.index" width="50" class="img-fluid rounded">
-                </td>
-                <td>{{node.title}}</td>
+                
+                <td>{{node.name}}</td>
+                <td>{{node.email}}</td>
                 <td>{{node.description}}</td>
-                <td>{{node.link}}</td>
               </tr>
             </tbody>
           </table>
@@ -37,15 +35,15 @@
         <div class="d-flex gap-1">
           <button class="btn btn-sm btn-primary" @click="addPartnerRecord" :disabled="spinner">
             <!-- <span v-if="spinner" class="spinner spinner-grow spinner-grow-sm"></span> -->
-            <span>Add Major</span>
+            <span>Add Attendee</span>
           </button>
+          <button class="btn btn-sm btn-success" @click="sendCertifications" :disabled="spinner">Send Certifications</button>
           <button class="btn btn-sm btn-outline-secondary" @click="refresh" :disabled="spinner">Refresh</button>
         </div>
       </div>
     </div>
   </section>
 </template>
-
 
 <script>
 import { useStore } from "../stores/mainStore";
@@ -62,78 +60,66 @@ export default {
     }
   },
   methods:{
+    sendCertifications(){
+        if(confirm('Are you sure?')){
+            this.spinner = true
+            fetch(this.store.getApi() + "?sendCertifications=1",{
+            method:"POST",
+            headers:{
+            "Content-Type":"text/plain"
+            },
+            body:JSON.stringify({
+            
+            username: this.store.username,
+            password: this.store.password,
+            
+            })
+            })
+            .then(res => {
+                this.spinner = false
+                alert('Meshe l7al')
+            })
+            .catch(err => {
+                this.spinner = false
+                alert('Meshe l7al')
+            })
+
+        }
+    },
     async addPartnerRecord(){
       if(confirm('Are you sure?')){
           // get the image then host then save
           this.spinner = true
-          var files = await utilities.openFiles()
-          if(files){
-            // some image was selected
-            var files64 = [];// turn to b64
-            for(let i = 0 ; i < files.length ; i++){
-                files64.push({
-                    alt:`Major-Thumbnail-${utilities.getCurrentDate()}`,
-                    // src64: await utilities.file64(files[i])
-                    src64: await utilities.optimizeImageQuality(await utilities.file64(files[i]),0.7)
-                })
+          // save to database
+
+        var name = prompt('Enter Attendee name')
+        var email = prompt('Enter Attendee email')
+        var description = prompt('Enter Workshop Description')
+
+        fetch(this.store.getApi() + "?addCertificationRecord=1",{
+            method:"POST",
+            headers:{
+            "Content-Type":"text/plain"
+            },
+            body:JSON.stringify({
+            
+            username: this.store.username,
+            password: this.store.password,
+            certification:{
+                name,
+                description,
+                email
             }
-           
-
-            // host to drive 
-            var res = await fetch(this.store.getApi() + "?hostImage=1",{
-              method:"POST",
-              headers:{
-                "Content-Type":"text/plain"
-              },
-              body:JSON.stringify({
-                
-                username: this.store.username,
-                password: this.store.password,
-                folderID:"12B8IGMkcwJnHaKchlj7Xoh7O3PowPycn",
-                images:files64
-              })
             })
-            res = await res.json()
-            console.log(res);
-            
-            
-
-            // save to database
-
-            var title = prompt('Enter Title')
-            var description = prompt('enter Description')
-            var link = prompt('enter Link')
-
-            fetch(this.store.getApi() + "?addMajorRecord=1",{
-              method:"POST",
-              headers:{
-                "Content-Type":"text/plain"
-              },
-              body:JSON.stringify({
-                
-                username: this.store.username,
-                password: this.store.password,
-                major:{
-                  thumbnail:res[0].src,
-                  title,
-                  description,
-                  link
-                }
-              })
-            })
-            .then(res => {
-              this.spinner = false
-              alert('Meshe l7al')
-            })
-            .catch(err => {
-              this.spinner = false
-              alert('Meshe l7al')
-            })
-
-            // refresh
-            // this.refresh()
-
-          }
+        })
+        .then(res => {
+            this.spinner = false
+            alert('Meshe l7al')
+        })
+        .catch(err => {
+            this.spinner = false
+            alert('Meshe l7al')
+        })
 
 
         }
@@ -174,7 +160,7 @@ export default {
     removePartnerRecord(id){
       if(confirm('Are you sure ?')){
         this.spinner = true
-        fetch(this.store.getApi() + "?removeMajorRecord=1",{
+        fetch(this.store.getApi() + "?removeCertificationRecord=1",{
           method:"POST",
           headers:{
             "Content-Type":"text/plain"
