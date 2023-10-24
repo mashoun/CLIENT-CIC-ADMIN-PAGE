@@ -16,6 +16,7 @@
                 <th scope="col">TITLE</th>
                 <th scope="col">DESCRIPTION</th>
                 <th scope="col">LINK</th>
+                <th scope="col">SCHEDULE</th>
               </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                 <td>{{node.title}}</td>
                 <td>{{node.description}}</td>
                 <td>{{node.link}}</td>
+                <td>{{node.schedule}}</td>
               </tr>
             </tbody>
           </table>
@@ -103,6 +105,7 @@ export default {
             var title = prompt('Enter Workshop Title')
             var description = prompt('Enter Workshop Description')
             var link = prompt('Enter Workshop Link')
+            var schedule = prompt('Enter Workshop Schedule')
 
             fetch(this.store.getApi() + "?addWorkshopRecord=1",{
               method:"POST",
@@ -117,7 +120,8 @@ export default {
                   thumbnail:res[0].src,
                   title,
                   description,
-                  link
+                  link,
+                  schedule
                 }
               })
             })

@@ -16,6 +16,7 @@
                 <th scope="col">TITLE</th>
                 <th scope="col">DESCRIPTION</th>
                 <th scope="col">LINK</th>
+                <th scope="col">TAG</th>
               </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                 <td>{{node.title}}</td>
                 <td>{{node.description}}</td>
                 <td>{{node.link}}</td>
+                <td>{{node.tag}}</td>
               </tr>
             </tbody>
           </table>
@@ -102,7 +104,8 @@ export default {
 
             var title = prompt('Enter Title')
             var description = prompt('enter Description')
-            var link = prompt('enter Link')
+            var link = prompt('Enter Link')
+            var tag = prompt('Enter Tag')
 
             fetch(this.store.getApi() + "?addMajorRecord=1",{
               method:"POST",
@@ -117,7 +120,8 @@ export default {
                   thumbnail:res[0].src,
                   title,
                   description,
-                  link
+                  link,
+                  tag
                 }
               })
             })

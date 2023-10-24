@@ -12,3 +12,10 @@
     /* transform: scale(1.1); */
     font-weight: bold;
 }
+
+td{
+    min-width: 250px !important;
+    max-width: 250px !important;
+    word-break: break-all;
+    
+}

@@ -13,7 +13,7 @@
                             <span v-if="!spinner">Login</span>
                             <span v-else class="spinner-grow spinner-grow-sm"></span>
                         </button>
-                        <small class="fs-xsmall">Developed by <a href="http://wa.mashoun.com">mashoun</a> - version 1.2.1</small>
+                        <small class="fs-xsmall">Developed by <a href="http://wa.mashoun.com">mashoun</a> - version 1.3</small>
                     </aside>
                 </div>
             </div>

@@ -42,7 +42,8 @@ export const useStore = defineStore('store', {
                     "thumbnail": "",
                     "title": "",
                     "description": "",
-                    "index": ""
+                    "index": "",
+                    "schedule":""
                 }
             ],
             "majors": [
@@ -52,7 +53,8 @@ export const useStore = defineStore('store', {
                     "thumbnail": "",
                     "title": "",
                     "description": "",
-                    "index": ""
+                    "index": "",
+                    "tag":""
                 }
             ],
             "fees": [
@@ -67,6 +69,26 @@ export const useStore = defineStore('store', {
                     "totalFees": "",
                     "index": ""
                 },
+            ],
+            "team":[
+                {
+                    "id": "",
+                    "thumbnail": "",
+                    "name": "",
+                    "position": "",
+                    "description": "",
+                    "index": ""
+                }
+            ],
+            "events":[
+                {
+                    "id": "",
+                    "date": "",
+                    "embed": "",
+                    "title": "",
+                    "description": "",
+                    "index": ""
+                }
             ]
 
         }
@@ -77,7 +99,7 @@ export const useStore = defineStore('store', {
     actions: {
 
         getApi() {
-            return 'https://script.google.com/macros/s/AKfycbyoNuVRAkF9QlYVpvwu1GooLe4LP9L2O94c-UiCbJty9KQAnzwaOltRpF2tbtAvXb7W/exec'
+            return 'https://script.google.com/macros/s/AKfycbwI0wwMzkdjasoLymk-UbNhudwUUJp6HHy4Dh8l3gmSF_u9FBJz5OSxaiBOb745v1-9/exec'
         },
 
     }
