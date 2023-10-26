@@ -10,14 +10,16 @@ export const useStore = defineStore('store', {
         profile: {
 
             "contact": {
-                "email": "info@mashoun.com",
+                "email": "",
                 "number": "",
                 "address": "",
                 "facebook": "",
                 "instagram": "",
                 "tiktok": "",
                 "linkedin": "",
-                "getStartedUrl": ""
+                "getStartedUrl": "",
+                "whatsapp":"",
+                "ardeNumber":""
             },
             "media": [
                 {
@@ -99,7 +101,7 @@ export const useStore = defineStore('store', {
     actions: {
 
         getApi() {
-            return 'https://script.google.com/macros/s/AKfycbwI0wwMzkdjasoLymk-UbNhudwUUJp6HHy4Dh8l3gmSF_u9FBJz5OSxaiBOb745v1-9/exec'
+            return 'https://script.google.com/macros/s/AKfycby1B-IjtRK1F3Hami2EwDBT-sOk18A_NH7SH8Gh5fun2QseVg0UUOe16dY_so_Teiw/exec'
         },
 
     }
